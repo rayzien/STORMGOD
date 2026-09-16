@@ -1,0 +1,9 @@
+node_modules/
+target/
+.env
+.venv
+__pycache__/
+config.txt
+*.onnx
+  
+ 

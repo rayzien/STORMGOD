@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: stormgod-nexus
+    env: docker
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: PROJECT_NAME
+        value: PROJECT STORMGOD

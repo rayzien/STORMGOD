@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT STORMGOD v4.0.0 — Profiles & AFK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/common/style.css">
+</head>
+<body>
+
+    <!-- PAGE LOADER -->
+    <div id="loader">
+        <div class="loader-logo">PROJECT STORMGOD</div>
+        <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    </div>
+
+
+
+    <!-- BACKGROUNDS -->
+    <div id="bg-wrap"><img id="bg-img" src="" alt="" class="fade-in"></div>
+    <div class="bg-grain"></div>
+    <div class="bg-color-bleed" id="colorBleed"></div>
+    <div class="vignette"></div>
+
+    <!-- WATERMARK -->
+    <div id="wm">PROJECT STORMGOD</div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="notif-toast">
+        <button class="notif-close" onclick="closeToast()">✕</button>
+        <div class="notif-title" id="nt-title">SYSTEM</div>
+        <div class="notif-body" id="nt-body">Welcome to Project Stormgod.</div>
+    </div>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <section id="hero" style="min-height:auto; padding-top:100px;">
+        <div style="margin-bottom:40px;">
+            <p class="hero-eyebrow">◈ Dashboard — AFK Auto-Responder</p>
+            <h1 class="hero-h1">USER <br><em>PROFILES</em></h1>
+        </div>
+        <div class="cards" style="align-items:flex-start;" id="profiles-container">
+            <!-- Dynamic Profiles injected here by common.js -->
+        </div>
+        
+        <div class="cards" style="align-items:flex-start; margin-top: 20px;">
+            <!-- Global AFK Settings -->
+            <div class="card" style="grid-column: 1/-1;">
+                <div class="card-num">AFK_SYS</div>
+                <div class="card-icon">⬡</div>
+                <h3 style="color:#ff3333;">AFK System</h3>
+                <p style="margin-bottom:20px;">Global AFK overrides.</p>
+                
+                <div class="row-switch" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                    <div>
+                        <span style="display:block; font-family:'Space Grotesk'; font-size:14px; font-weight:700;">Enable Auto-Responder</span>
+                        <span style="font-family:'Space Grotesk'; font-size:11px; color:rgba(255,255,255,0.5);">Automatically reply to DMs</span>
+                    </div>
+                    <div class="toggle-switch" id="afkSwitch" onclick="toggleAFK()"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">PROJECT STORMGOD</div>
+            <ul class="footer-links">
+                <li><a href="/pages/index.html">◈ Home</a></li>
+                <li><a href="/pages/settings.html">⬡ Settings</a></li>
+                <li><a href="/pages/profiles.html">◈ Profiles</a></li>
+                <li><a href="/pages/premium.html">◉ Premium</a></li>
+                <li><a href="/pages/about.html">◎ About</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2025 PROJECT STORMGOD — dev by rayzien (v4.0.0)</p>
+        </div>
+    </footer>
+
+    <!-- Sidebar Menu Placeholder -->
+    <div id="sidebar-placeholder"></div>
+
+    <script src="/common/common.js"></script>
+    <script src="/common/navigationbar.js"></script>
+    <script src="/common/menue.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initProfilesPage();
+        });
+
+        async function initProfilesPage() {
+            try {
+                const res = await fetch('/api/config');
+                if (res.ok) {
+                    localConfig = await res.json();
+                }
+            } catch(e) { console.error(e); }
+
+            const afkEnabled = localConfig.afk_enabled === 'true';
+            const switchEl = document.getElementById('afkSwitch');
+            if (switchEl) switchEl.className = 'toggle-switch' + (afkEnabled ? ' active' : '');
+            
+            if (window.renderDynamicProfiles) {
+                renderDynamicProfiles();
+            }
+        }
+
+        function toggleAFK() {
+            const isAFK = localConfig.afk_enabled === 'true';
+            localConfig.afk_enabled = isAFK ? 'false' : 'true';
+            const switchEl = document.getElementById('afkSwitch');
+            if (switchEl) switchEl.className = 'toggle-switch' + (localConfig.afk_enabled === 'true' ? ' active' : '');
+            playSound(localConfig.afk_enabled === 'true' ? 'toggle-on' : 'toggle-off');
+            pushConfig();
+        }
+    </script>
+</body>
+</html>

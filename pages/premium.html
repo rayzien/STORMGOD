@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT STORMGOD v4.0.0 — Premium Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/common/style.css">
+</head>
+<body>
+
+    <!-- PAGE LOADER -->
+    <div id="loader">
+        <div class="loader-logo">PROJECT STORMGOD</div>
+        <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    </div>
+
+
+
+    <!-- BACKGROUNDS -->
+    <div id="bg-wrap"><img id="bg-img" src="" alt="" class="fade-in"></div>
+    <div class="bg-grain"></div>
+    <div class="bg-color-bleed" id="colorBleed"></div>
+    <div class="vignette"></div>
+
+    <!-- WATERMARK -->
+    <div id="wm">PROJECT STORMGOD</div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="notif-toast">
+        <button class="notif-close" onclick="closeToast()">✕</button>
+        <div class="notif-title" id="nt-title">SYSTEM</div>
+        <div class="notif-body" id="nt-body"></div>
+    </div>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- SCROLL COUNTER -->
+    <div class="scroll-counter"><span id="scrollPct">00</span>%</div>
+
+    <!-- ═══ PREMIUM SECTION ═══ -->
+    <section id="hero">
+        <p class="hero-eyebrow">◈ Upgrades — Licenses</p>
+        <h1 class="hero-h1">PREMIUM<br><em>EDITION</em></h1>
+        
+        <div class="cards" style="margin-top:40px;">
+            <div class="card" style="grid-column: 1 / -1; cursor:pointer;" onclick="showToast('Premium', 'Premium upgrades are managed by rayzien. Contact developer for licensing.')">
+                <div class="card-num">PRO_01</div>
+                <div class="card-icon" style="color:var(--c2);">★</div>
+                <h3 style="color:var(--c2);">Premium Features & License</h3>
+                <p style="margin-bottom:20px;">Unlock high-concurrency neural nodes, multi-account routing, zero-downtime cloud hosting, and fallback engines.</p>
+                
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;">
+                    <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
+                        <strong style="color:var(--c1);">Captcha Indicator & Auto Pause</strong>
+                        <p style="font-size:11px; margin-top:5px; color:rgba(255,255,255,0.5);">Detects when a captcha or verification prompt appears, sends you a notification, and automatically pauses the bot to prevent bans.</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
+                        <strong style="color:var(--c1);">Multi-channel Integration (Up to 10 Channels)</strong>
+                        <p style="font-size:11px; margin-top:5px; color:rgba(255,255,255,0.5);">Monitor and catch simultaneously across up to 10 servers, sub-channels, and private group chats (Free includes up to 2 channels).</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
+                        <strong style="color:var(--c1);">Human-like Cooldowns</strong>
+                        <p style="font-size:11px; margin-top:5px; color:rgba(255,255,255,0.5);">Advanced rate limit safety protections. Simulate human typing delays and randomized sleep cycles.</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
+                        <strong style="color:var(--c2);">Custom Request</strong>
+                        <p style="font-size:11px; margin-top:5px; color:rgba(255,255,255,0.5);">Need a specific feature tailored just for you? Let me know and I'll try my best to build it for your setup.</p>
+                    </div>
+                </div>
+
+                <div style="text-align:center; margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
+                    <div style="font-family:'Bebas Neue'; font-size:36px;">
+                        <span style="text-decoration:line-through; color:rgba(255,255,255,0.3);">$40</span> <span style="color:var(--c2);">$2 + Tip</span>
+                    </div>
+                    <p style="font-size:12px; color:rgba(255,255,255,0.5);">LITECOIN (LTC) OR POLYGON (MATIC) ONLY</p>
+                    <button class="btn" style="margin-top:15px; border-color:var(--c2); color:var(--c2);">Contact Developer (rayzien)</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">PROJECT STORMGOD</div>
+            <ul class="footer-links">
+                <li><a href="/pages/index.html">◈ Home</a></li>
+                <li><a href="/pages/settings.html">⬡ Settings</a></li>
+                <li><a href="/pages/premium.html">◉ Premium</a></li>
+                <li><a href="/pages/about.html">◎ About</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2025 PROJECT STORMGOD — dev by rayzien (v4.0.0)</p>
+            <p class="footer-copy" id="bgCredit">Background: Engine Base</p>
+        </div>
+    </footer>
+
+    <!-- Sidebar Menu Placeholder -->
+    <div id="sidebar-placeholder"></div>
+
+    <script src="/common/common.js"></script>
+    <script src="/common/navigationbar.js"></script>
+    <script src="/common/menue.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT STORMGOD v4.0.0 — Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/common/style.css">
+    <style>
+        body { overflow: hidden; } /* Disable scroll on homepage */
+    </style>
+</head>
+<body>
+
+    <!-- PAGE LOADER -->
+    <div id="loader">
+        <div class="loader-logo">PROJECT STORMGOD</div>
+        <div class="loader-bar-wrap">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+
+
+    <!-- BACKGROUNDS -->
+    <div id="bg-wrap">
+        <img id="bg-img" src="" alt="" class="fade-in">
+    </div>
+    <div class="bg-grain"></div>
+    <div class="bg-color-bleed" id="colorBleed"></div>
+    <div class="vignette"></div>
+
+    <!-- WATERMARK -->
+    <div id="wm">PROJECT STORMGOD</div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="notif-toast">
+        <button class="notif-close" onclick="closeToast()">✕</button>
+        <div class="notif-title" id="nt-title">SYSTEM</div>
+        <div class="notif-body" id="nt-body">Welcome to Project Stormgod.</div>
+    </div>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- SCROLL COUNTER -->
+    <div class="scroll-counter"><span id="scrollPct">00</span>%</div>
+
+    <!-- ═══ DASHBOARD SECTION ═══ -->
+    <section id="hero">
+        <div style="position:relative; margin-bottom:40px;">
+            <div>
+                <p class="hero-eyebrow">◈ Dashboard — Overview</p>
+                <h1 class="hero-h1" style="margin-bottom:0;">STORM GOD<br><em>ENGINE</em></h1>
+                <p id="hero-active-user" style="font-family:'Space Grotesk'; font-size:14px; color:var(--c2); margin-top:10px; font-weight:bold;">Active Listener: Loading...</p>
+            </div>
+            <div id="hero-img-container" style="width:384px; height:384px; position:absolute; right:10%; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; justify-content:center; align-items:center; overflow:visible; transition:all 0.5s; pointer-events:none; z-index: 20;">
+                <div id="hero-stormgod-bg" style="position:absolute; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(0,243,255,0.25) 0%, rgba(138,43,226,0.15) 50%, rgba(0,0,0,0) 75%); border:1px solid rgba(0,243,255,0.3); filter:drop-shadow(0 0 25px rgba(0,243,255,0.4)); z-index:-1; transition:all 0.5s;"></div>
+                <img id="hero-detected-img" src="" style="max-width:85%; max-height:85%; object-fit:contain; display:none; transition: filter 0.5s;">
+                <div id="hero-detected-name" style="font-family:'Bebas Neue'; font-size:32px; color:var(--c1); text-shadow:0 0 20px rgba(0,0,0,0.8); margin-top:10px; text-transform:uppercase; letter-spacing:2px; display:none;"></div>
+                <div id="hero-rare-caught-container" style="margin-top:5px; font-family:'Space Grotesk'; font-size:13px; color:#ffd700; font-weight:700; background:rgba(0,0,0,0.6); padding:4px 12px; border-radius:20px; border:1px solid #ffd700; display:none;">
+                    ★ RARE LOGGED: <span id="hero-rare-count">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cards">
+            <!-- Detection Stepper -->
+            <div class="card">
+                <div class="card-num">SYS</div>
+                <div class="card-icon">◈</div>
+                <h3>HP Stepper / Real-Time Gate</h3>
+                
+                <div class="flow-container" style="margin-top:20px; margin-bottom:20px;">
+                    <div class="hp-bar-outer" style="background:rgba(255,255,255,0.1); height:4px; width:100%; position:relative;">
+                        <div class="hp-bar-inner" id="flow-bar" style="background:var(--c1); height:100%; width:0%; transition:width 0.5s;"></div>
+                    </div>
+                    <div class="hp-stepper-nodes" style="display:flex; justify-content:space-between; margin-top:-10px;">
+                        <div class="flow-node-wrapper" id="flow-node-1" style="width:16px; height:16px; background:var(--c3); border-radius:50%;"></div>
+                        <div class="flow-node-wrapper" id="flow-node-2" style="width:16px; height:16px; background:rgba(255,255,255,0.2); border-radius:50%;"></div>
+                        <div class="flow-node-wrapper" id="flow-node-3" style="width:16px; height:16px; background:rgba(255,255,255,0.2); border-radius:50%;"></div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-top:5px; font-family:'Space Grotesk'; font-size:11px; color:rgba(255,255,255,0.5);">
+                        <span>Detected</span>
+                        <span>Processed</span>
+                        <span>Executed</span>
+                    </div>
+                </div>
+                <p id="flow-details" style="color:var(--c2); font-weight:700;">Awaiting Discord Gate Events...</p>
+            </div>
+
+            <!-- Metrics -->
+            <div class="card">
+                <div class="card-num">METRICS</div>
+                <div class="card-icon">⬡</div>
+                <h3>Acquisition Stats</h3>
+                <p id="stat-hf-model" style="margin-bottom:10px;">Model: loading...</p>
+                
+                <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                    <div>
+                        <div style="color:var(--c1); font-weight:700; font-size:12px;">Successful</div>
+                        <div id="metric-success" style="font-family:'Bebas Neue'; font-size:40px; color:#fff;">0</div>
+                    </div>
+                    <div>
+                        <div style="color:var(--c2); font-weight:700; font-size:12px;">Failed/Fled</div>
+                        <div id="metric-failed" style="font-family:'Bebas Neue'; font-size:40px; color:#fff;">0</div>
+                    </div>
+                    <div>
+                        <div style="color:#ffd700; font-weight:700; font-size:12px;">Rare/Special</div>
+                        <div id="metric-rare" style="font-family:'Bebas Neue'; font-size:40px; color:#ffd700;">0</div>
+                    </div>
+                    <div>
+                        <div style="color:rgba(255,255,255,0.5); font-weight:700; font-size:12px;">Ratio</div>
+                        <div id="metric-ratio" style="font-family:'Bebas Neue'; font-size:40px; color:#fff;">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Credits Vault -->
+            <div class="card">
+                <div class="card-num">VAULT</div>
+                <div class="card-icon">🪙</div>
+                <h3 style="color:#ffd700;">STORM GOD CREDITS</h3>
+                <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-bottom:5px;">Auto-synced system metrics</p>
+                <div style="display:flex; align-items:baseline; margin-top:10px;">
+                    <div id="metric-pokecoins" style="font-family:'Bebas Neue'; font-size:48px; color:#ffd700; text-shadow:0 0 15px rgba(255,215,0,0.3);">0</div>
+                    <span style="font-size:14px; font-weight:700; color:rgba(255,255,255,0.7); margin-left:8px;">CREDITS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">PROJECT STORMGOD</div>
+            <ul class="footer-links">
+                <li><a href="/pages/index.html">◈ Home</a></li>
+                <li><a href="/pages/settings.html">⬡ Settings</a></li>
+                <li><a href="/pages/premium.html">◉ Premium</a></li>
+                <li><a href="/pages/about.html">◎ About</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2025 PROJECT STORMGOD — dev by rayzien (v4.0.0)</p>
+            <p class="footer-copy" id="bgCredit">Background: Engine Base</p>
+        </div>
+    </footer>
+
+    <!-- Sidebar Menu Placeholder -->
+    <div id="sidebar-placeholder"></div>
+
+    <script src="/common/common.js"></script>
+    <script src="/common/navigationbar.js"></script>
+    <script src="/common/menue.js"></script>
+</body>
+</html>
